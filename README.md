@@ -122,18 +122,18 @@ Instance Profile attached to EC2 instances via Launch Template.
 
 Upload your index.html to your S3 bucket:
 
-<pre> ```aws s3 cp index.html s3://zubair-490-s-p/index.html``` 
+<pre> ```aws s3 cp index.html s3://zubair-490-s-p/index.html``` </pre>
  ⚠️ Ensure your EC2 IAM Role has s3:GetObject and s3:ListBucket permissions.
 
 ### 2. Deploy CloudFormation Template
 
 You can launch the stack using AWS Console or CLI:
-aws cloudformation create-stack \
+<pre>```aws cloudformation create-stack \
   --stack-name staticwebhosting \
   --template-body file://NewProjectAWSCFT.yml \
   --parameters ParameterKey=KeyName,ParameterValue=LAMP \
                ParameterKey=WebsiteBucket,ParameterValue=zubair-490-s-p \
-  --capabilities CAPABILITY_NAMED_IAM
+  --capabilities CAPABILITY_NAMED_IAM```</pre>
 
 ### 3. Check Stack Creation
 
