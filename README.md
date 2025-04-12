@@ -1,22 +1,22 @@
-Static Website Hosting with High Availability on AWS
+# Static Website Hosting with High Availability on AWS
 
 This project demonstrates how to host a static website on AWS using EC2 instances behind an Application Load Balancer with Auto Scaling for high availability. The solution is automated using AWS CloudFormation, ensuring Infrastructure as Code (IaC) principles.
 
-✨ Features
+# ✨ Features
 
-Hosts static website using Apache HTTP Server
+###  Hosts static website using Apache HTTP Server
 
-Auto scaling to handle traffic spikes
+### Auto scaling to handle traffic spikes
 
-Load balancer for distributing traffic
+### Load balancer for distributing traffic
 
-Content pulled from S3 bucket to EC2 on launch
+### Content pulled from S3 bucket to EC2 on launch
 
-IAM roles with least privilege access
+### IAM roles with least privilege access
 
-UserData for automated configuration
+### UserData for automated configuration
 
-🔧 Architecture Overview
+# 🔧 Architecture Overview
 
 
 ![Architecture Diagram](iaccomposer.png)
