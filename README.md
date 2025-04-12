@@ -146,7 +146,7 @@ Verify that all resources were created
 4. Access Your Website
 
 Once stack creation is complete, visit the Load Balancer DNS name:
-[!Website View](accessweb.png)
+![Website View](accessweb.png)
 
 📄 License
 
