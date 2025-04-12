@@ -19,7 +19,7 @@ UserData for automated configuration
 🔧 Architecture Overview
 
 
-![Architecture Diagram](iac/composer.png)
+![Architecture Diagram](iac composer.png)
 
 S3: Stores index.html and website assets
 
@@ -141,7 +141,7 @@ Go to AWS CloudFormation Console
 
 Verify that all resources were created
 
-![CloudFormation Stack Created](cft/stack.png)
+![CloudFormation Stack Created](cft stack.png)
 
 4. Access Your Website
 
