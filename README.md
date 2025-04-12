@@ -19,7 +19,7 @@ UserData for automated configuration
 🔧 Architecture Overview
 
 
-![Architecture Diagram](iac composer.png)
+![Architecture Diagram](iaccomposer.png)
 
 S3: Stores index.html and website assets
 
@@ -141,12 +141,12 @@ Go to AWS CloudFormation Console
 
 Verify that all resources were created
 
-![CloudFormation Stack Created](cft stack.png)
+![CloudFormation Stack Created](cftstack.png)
 
 4. Access Your Website
 
 Once stack creation is complete, visit the Load Balancer DNS name:
-[!Website View](http://static-webap-f3anuwlaaugt-771760443.ap-south-1.elb.amazonaws.com/)
+[!Website View](accessweb.png)
 
 📄 License
 
