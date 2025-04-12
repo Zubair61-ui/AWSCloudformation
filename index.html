@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Static Website Hosting with High Availability</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f6f8;
+            color: #333;
+            max-width: 800px;
+            margin: 40px auto;
+            padding: 20px;
+            line-height: 1.6;
+        }
+        h1 {
+            color: #0073e6;
+        }
+        .section {
+            margin-top: 20px;
+        }
+    </style>
+</head>
+<body>
+
+    <h1>Static Website Hosting with High Availability</h1>
+
+    <p>This project demonstrates how to host a static website on AWS with high availability and scalability.</p>
+
+    <div class="section">
+        <h2>Project Overview</h2>
+        <p>The infrastructure is built using AWS CloudFormation, ensuring that resources are provisioned and managed as code.</p>
+    </div>
+
+    <div class="section">
+        <h2>Architecture</h2>
+        <ul>
+            <li>EC2 Auto Scaling Group behind an Application Load Balancer</li>
+            <li>Instances use Apache to serve static website files</li>
+            <li>Website content is pulled from an S3 bucket at launch</li>
+            <li>Elastic IP is used for persistent access</li>
+        </ul>
+    </div>
+
+    <div class="section">
+        <h2>High Availability</h2>
+        <p>
+            Auto Scaling ensures that new instances are launched automatically in case of failures or increased traffic.
+            The Load Balancer routes incoming traffic evenly across healthy instances.
+        </p>
+    </div>
+
+    <div class="section">
+        <h2>Technology Stack</h2>
+        <ul>
+            <li>Amazon EC2</li>
+            <li>Elastic Load Balancer</li>
+            <li>S3 for storing website files</li>
+            <li>Auto Scaling Groups</li>
+            <li>Apache Web Server</li>
+            <li>CloudFormation for Infrastructure as Code</li>
+        </ul>
+    </div>
+
+    <div class="section">
+        <h2>Conclusion</h2>
+        <p>This project showcases a production-grade solution for hosting static websites using AWS services while ensuring availability, scalability, and automation.</p>
+    </div>
+
+</body>
+</html>

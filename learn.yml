@@ -1,0 +1,36 @@
+# Return a value from a comma-delimited list parameter
+Parameters:
+  VPC:
+    Type: String
+    Default: vpc-123456
+  VpcAzs:
+    Type: CommaDelimitedList
+    Default: us-west-2a,us-west-2b,us-west-2c
+  DbSubnetIpBlocks:
+    Type: CommaDelimitedList
+    Default: 172.16.0.0/26, 172.16.0.64/26, 172.16.0.128/26
+Resources:
+  DbSubnet1:
+    Type: AWS::EC2::Subnet
+    Properties:
+      AvailabilityZone: !Sub "${AWS::Region}${VpcAzs.0}"
+      VpcId: !Ref VPC
+      CidrBlock: !Select
+        - 0
+        - !Ref DbSubnetIpBlocks
+  DbSubnet2:
+    Type: AWS::EC2::Subnet
+    Properties:
+      AvailabilityZone: !Sub "${AWS::Region}${VpcAzs.1}"
+      VpcId: !Ref VPC
+      CidrBlock: !Select
+        - 1
+        - !Ref DbSubnetIpBlocks
+  DbSubnet3:
+    Type: AWS::EC2::Subnet
+    Properties:
+      AvailabilityZone: !Sub "${AWS::Region}${VpcAzs.2}"
+      VpcId: !Ref VPC
+      CidrBlock: !Select
+        - 2
+        - !Ref DbSubnetIpBlocks

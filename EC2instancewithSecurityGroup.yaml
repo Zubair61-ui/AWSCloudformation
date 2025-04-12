@@ -1,0 +1,100 @@
+AWSTemplateFormatVersion: '2010-09-09'
+Description: Create EC2 instance with SSH-only SG, EIP, parameterized values, and custom EBS.
+
+Parameters:
+  InstanceType:
+    Type: String
+    Description: EC2 instance type
+    Default: t2.micro
+    AllowedValues:
+      - t2.micro
+      - t2.small
+      - t3.micro
+      - t3.small
+    ConstraintDescription: Must be a valid EC2 instance type.
+
+  KeyName:
+    Type: AWS::EC2::KeyPair::KeyName
+    Description: Name of an existing EC2 KeyPair
+
+  AmiId:
+    Type: AWS::EC2::Image::Id
+    Description: AMI ID to launch the instance with
+
+  VpcId:
+    Type: AWS::EC2::VPC::Id
+    Description: VPC ID to launch the instance in
+
+  SubnetId:
+    Type: AWS::EC2::Subnet::Id
+    Description: Subnet ID to launch the instance in
+    
+  Region:
+    Type: String
+    Description: AWS Region where resources will be deployed
+    Default: us-east-1
+    AllowedValues:
+      - us-east-1
+      - us-east-2
+      - us-west-1
+      - us-west-2
+      - eu-west-1
+      - eu-central-1
+      - ap-south-1
+    ConstraintDescription: Must be a valid AWS region.
+
+  
+
+Resources:
+  EC2SecurityGroup:
+    Type: AWS::EC2::SecurityGroup
+    Properties:
+      GroupDescription: Enable SSH access only
+      VpcId: !Ref VpcId
+      SecurityGroupIngress:
+        - IpProtocol: tcp
+          FromPort: 22
+          ToPort: 22
+          CidrIp: 0.0.0.0/0
+
+  EC2Instance:
+    Type: AWS::EC2::Instance
+    Properties:
+      InstanceType: !Ref InstanceType
+      KeyName: !Ref KeyName
+      ImageId: !Ref AmiId
+      NetworkInterfaces:
+        - AssociatePublicIpAddress: false
+          DeviceIndex: 0
+          SubnetId: !Ref SubnetId
+          GroupSet:
+            - !Ref EC2SecurityGroup
+      BlockDeviceMappings:
+        - DeviceName: /dev/xvda
+          Ebs:
+            VolumeSize: 20
+            VolumeType: gp2
+            DeleteOnTermination: true
+      Tags:
+        - Key: Name
+          Value: SSH-Only-EC2
+
+  ElasticIP:
+    Type: AWS::EC2::EIP
+    Properties:
+      Domain: vpc
+
+  EIPAssociation:
+    Type: AWS::EC2::EIPAssociation
+    Properties:
+      AllocationId: !GetAtt ElasticIP.AllocationId
+      InstanceId: !Ref EC2Instance
+
+Outputs:
+  InstanceId:
+    Description: The instance ID
+    Value: !Ref EC2Instance
+
+  ElasticIPAddress:
+    Description: Public IP of the EC2 instance
+    Value: !Ref ElasticIP

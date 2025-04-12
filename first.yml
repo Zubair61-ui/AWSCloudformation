@@ -1,0 +1,26 @@
+name : Zubair 
+age : 22
+#Sever Configuration
+Server :
+  name : "Hashmat"
+  capacity : 50GB # This is an object
+#Lists in yaml
+social_media :
+  - insta-zubair
+  - linkedin-zubair
+  - youtube-zubair40
+#Multiline in yaml
+testing : |
+  this 
+  is 
+  a 
+  multi-line
+  string.
+#liist of objects
+list_of_servers :
+  - server1 :
+    name : "ec2"
+    volume : 40GB
+  - server2 :
+    name : "fargate"
+    volume : 50GB
