@@ -122,7 +122,7 @@ Instance Profile attached to EC2 instances via Launch Template.
 
 Upload your index.html to your S3 bucket:
 
-aws s3 cp index.html s3://zubair-490-s-p/index.html
+```aws s3 cp index.html s3://zubair-490-s-p/index.html```
  ⚠️ Ensure your EC2 IAM Role has s3:GetObject and s3:ListBucket permissions.
 
 ### 2. Deploy CloudFormation Template
