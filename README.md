@@ -34,7 +34,7 @@ IAM Role: Grants EC2 permission to read from S3
 CloudFormation Template: Defines the entire stack
 
 
-⚙️ Technologies Used
+## ⚙️ Technologies Used
 
 AWS CloudFormation
 
@@ -50,15 +50,15 @@ Auto Scaling Group
 
 Apache Web Server (Ubuntu)
 
-📝 Resource Creation via CloudFormation (YAML Template Overview)
+## 📝 Resource Creation via CloudFormation (YAML Template Overview)
 
-1. VPC & Subnet Configuration
+### 1. VPC & Subnet Configuration
 
 A custom VPC is created with multiple subnets across availability zones to support high availability.
 
 
 
-2. Internet Gateway & Routing
+### 2. Internet Gateway & Routing
 
 An Internet Gateway is attached to the VPC.
 
@@ -66,19 +66,19 @@ A Route Table is created to allow internet access, and associated with public su
 
 
 
-3. Security Group
+### 3. Security Group
 
 A security group is configured to allow HTTP (port 80) and SSH (port 22) access.
 
 
 
-4. S3 Bucket Reference
+### 4. S3 Bucket Reference
 
 Parameter allows users to input the S3 bucket name containing website content (index.html).
 
 
 
-5. Launch Template
+### 5. Launch Template
 
 Defines EC2 instance configuration including:
 
@@ -92,7 +92,7 @@ Apache web server start & enable
 
 
 
-6. Application Load Balancer (ALB)
+### 6. Application Load Balancer (ALB)
 
 ALB is created across public subnets with a target group pointing to EC2 instances.
 
@@ -100,7 +100,7 @@ A listener is configured to route HTTP traffic to target group.
 
 
 
-7. Auto Scaling Group
+### 7. Auto Scaling Group
 
 Configured to launch EC2 instances based on the Launch Template.
 
@@ -108,7 +108,7 @@ Minimum and maximum instance count defined.
 
 
 
-8. IAM Role & Instance Profile
+### 8. IAM Role & Instance Profile
 
 IAM Role created with permission to access S3.
 
@@ -116,16 +116,16 @@ Instance Profile attached to EC2 instances via Launch Template.
 
 
 
-⏳ Setup Steps
+## ⏳ Setup Steps
 
-1. Prepare Your S3 Bucket
+### 1. Prepare Your S3 Bucket
 
 Upload your index.html to your S3 bucket:
 
 aws s3 cp index.html s3://zubair-490-s-p/index.html
  ⚠️ Ensure your EC2 IAM Role has s3:GetObject and s3:ListBucket permissions.
 
-2. Deploy CloudFormation Template
+### 2. Deploy CloudFormation Template
 
 You can launch the stack using AWS Console or CLI:
 aws cloudformation create-stack \
@@ -135,7 +135,7 @@ aws cloudformation create-stack \
                ParameterKey=WebsiteBucket,ParameterValue=zubair-490-s-p \
   --capabilities CAPABILITY_NAMED_IAM
 
-3. Check Stack Creation
+### 3. Check Stack Creation
 
 Go to AWS CloudFormation Console
 
@@ -143,15 +143,15 @@ Verify that all resources were created
 
 ![CloudFormation Stack Created](cftstack.png)
 
-4. Access Your Website
+### 4. Access Your Website
 
 Once stack creation is complete, visit the Load Balancer DNS name:
 ![Website View](accessweb.png)
 
-📄 License
+## 📄 License
 
 This project is open-source and available under the MIT License.
 
-🙏 Acknowledgements
+## 🙏 Acknowledgements
 
 Thanks to the AWS documentation and community examples that inspired and guided this project.
